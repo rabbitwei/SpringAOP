@@ -12,6 +12,18 @@
 
     <context:component-scan base-package="cn.rabbit"/>
 
-    <aop:aspectj-autoproxy/>
+    <!--aop 操作使用 xml 配置文件的方式-->
+    <!--aop配置-->
+    <aop:config>
+        <!--定义切入表达式，拦截哪些方法-->
+        <aop:pointcut id="pointCut" expression="execution(* cn.rabbit.dao.*.*(..))"/>
 
+        <!--指定切面类是哪个-->
+        <aop:aspect ref="AOP">
+            <!--指定来拦截的时候执行切面类的哪些方法-->
+            <aop:before method="begin" pointcut-ref="pointCut"/>
+            <aop:after method="close" pointcut-ref="pointCut"/>
+            <aop:around method="around" pointcut-ref="pointCut"/>
+        </aop:aspect>
+    </aop:config>
 </beans>
