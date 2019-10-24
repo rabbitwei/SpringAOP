@@ -10,8 +10,11 @@
         http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
+    <!--使用注解的方式来进行 aop 操作-->
+    <!--扫描 注解-->
     <context:component-scan base-package="cn.rabbit"/>
 
+    <!--扫描 aop-->
     <aop:aspectj-autoproxy/>
 
 </beans>
